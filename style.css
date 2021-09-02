@@ -13,19 +13,20 @@ main {
 }
 
 button {
-  margin: 20px;
+  margin
 }
 
-#container {
+#grid {
   display: grid;
   border-style: solid;
+  margin: 20px;
   width: 960px;
   height: 960px;
   background-color: rgb(233, 233, 233);
   grid-template-columns: repeat(16, 1fr);
 }
 
-.grid-item {
+.tile {
   height: auto;
   width: auto;
   text-align: center;

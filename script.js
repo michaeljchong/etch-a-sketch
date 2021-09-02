@@ -1,31 +1,32 @@
-const container = document.getElementById("container");
+const grid = document.getElementById("grid");
 
 function initializeGrid(gridSize) {
   for (let i = 0; i < gridSize**2; i++) {
-    const div = document.createElement('div');
-    div.classList.add("grid-item");
-    container.appendChild(div);
+    const tile = document.createElement('div');
+    tile.classList.add("tile");
+    grid.appendChild(tile);
   }
 }
 
-function changeGridColor() {
-  const gridItems = document.querySelectorAll(".grid-item");
-  gridItems.forEach(gridItem => {
-    gridItem.addEventListener('mouseover', () => {
-      gridItem.style.backgroundColor = "blue";
+function changeTileColor() {
+  const tiles = document.querySelectorAll(".tile");
+  tiles.forEach(tile => {
+    tile.addEventListener('mouseover', () => {
+      tile.style.backgroundColor = "blue";
     });
   });
 }
 
 function clearScreen() {
-  const gridSize = prompt("How many squares per side?", 16);
-  container.innerHTML = "";
-  container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  let gridSize = prompt("How many squares per side? (1-100)", 16);
+  gridSize = (gridSize > 100) ? 100 : (gridSize < 1) ? 1 : gridSize;
+  grid.innerHTML = "";
+  grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   initializeGrid(gridSize);
-  changeGridColor();
+  changeTileColor();
 }
 
 initializeGrid(16);
-changeGridColor();
+changeTileColor();
 const clearScreenBtn = document.getElementById("clearScreenBtn");
 clearScreenBtn.addEventListener('click', clearScreen);
