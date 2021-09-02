@@ -5,9 +5,14 @@
   grid-template-columns: repeat(16, 1fr);
 }
 
+#button {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+}
+
 .grid-item {
   height: auto;
   width: auto;
-  background-color: grey;
   text-align: center;
 }
