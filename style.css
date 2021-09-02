@@ -1,14 +1,28 @@
-#container {
-  display: grid;
-  width: 960px;
-  height: 960px;
-  grid-template-columns: repeat(16, 1fr);
+html {
+  font-family: Helvetica;
 }
 
-#button {
+header {
+  text-align: center;
+}
+
+main {
   display: flex;
-  margin: 10px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin: 20px;
+}
+
+#container {
+  display: grid;
+  border-style: solid;
+  width: 960px;
+  height: 960px;
+  background-color: rgb(233, 233, 233);
+  grid-template-columns: repeat(16, 1fr);
 }
 
 .grid-item {
