@@ -1,6 +1,6 @@
 html {
   font-family: "Open Sans";
-  background-color: rgb(191, 254, 255);
+  background-color: rgb(255, 191, 191);
 }
 
 header {
@@ -18,16 +18,16 @@ main {
   align-items: center;
 }
 
-.dropdown, .buttons, #grid {
+.buttons, #grid {
   margin: 10px;
 }
 
 #grid {
   display: grid;
   border-style: solid;
-  border-color: rgb(146, 253, 255);
-  border-radius: 20px;
-  border-width: 20px;
+  border-color: rgb(255, 146, 146);
+  border-radius: 50px;
+  border-width: 50px;
   background-color: white;
   width: 960px;
   height: 960px;

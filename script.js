@@ -1,5 +1,4 @@
 const grid = document.getElementById('grid');
-let tileColor = 'rgba(0, 0, 0, 0.1)';
 
 function initializeGrid(gridSize) {
   for (let i = 0; i < gridSize**2; i++) {
@@ -22,14 +21,14 @@ function grayscale() {
   }
 }
 
-let a = 0.1;
-
-function changeTileColor() {
+function changeTileColor(color) {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach(tile => {
     tile.addEventListener('mouseover', () => {
-      a += 0.1;
-      tile.style.backgroundColor = `rgba(0, 0, 0, ${a})`;
+      let tileColor = (color === 'rainbow') ? 
+          randomColor() : (color === 'grayscale') ? 
+          grayscale() : 'black';
+      tile.style.backgroundColor = tileColor;
     });
   });
 }
@@ -40,16 +39,24 @@ function clearScreen() {
   grid.innerHTML = "";
   grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   initializeGrid(gridSize);
-  changeTileColor();
+  changeTileColor(tileColor);
 }
 
 initializeGrid(16);
 changeTileColor();
 
-// Implement color dropdown interaction
-// const colorOptions = document.getElementById('colors');
-// colorOptions.addEventListener('click', randomColor);
+const blackBtn = document.getElementById('blackBtn');
+blackBtn.addEventListener('click', changeTileColor);
 
+const grayscaleBtn = document.getElementById('grayscaleBtn');
+grayscaleBtn.addEventListener('click', () => {
+  changeTileColor('grayscale');
+});
+
+const rainbowBtn = document.getElementById('rainbowBtn');
+rainbowBtn.addEventListener('click', () => {
+  changeTileColor('rainbow');
+});
 
 const clearScreenBtn = document.getElementById('clearScreenBtn');
 clearScreenBtn.addEventListener('click', clearScreen);
