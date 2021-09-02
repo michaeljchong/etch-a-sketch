@@ -1,18 +1,35 @@
-const grid = document.getElementById("grid");
+const grid = document.getElementById('grid');
+let tileColor = 'rgba(0, 0, 0, 0.1)';
 
 function initializeGrid(gridSize) {
   for (let i = 0; i < gridSize**2; i++) {
     const tile = document.createElement('div');
-    tile.classList.add("tile");
+    tile.classList.add('tile');
     grid.appendChild(tile);
   }
 }
 
+function randomColor() {
+  const red = Math.floor((Math.random() * 255));
+  const blue = Math.floor((Math.random() * 255));
+  const green = Math.floor((Math.random() * 255));
+  return `rgb(${red}, ${blue}, ${green})`;
+}
+
+function grayscale() {
+  for (let a = 0.1; a < 1; a+=0.1) {
+    return `rgba(0, 0, 0, ${a})`
+  }
+}
+
+let a = 0.1;
+
 function changeTileColor() {
-  const tiles = document.querySelectorAll(".tile");
+  const tiles = document.querySelectorAll('.tile');
   tiles.forEach(tile => {
     tile.addEventListener('mouseover', () => {
-      tile.style.backgroundColor = "blue";
+      a += 0.1;
+      tile.style.backgroundColor = `rgba(0, 0, 0, ${a})`;
     });
   });
 }
@@ -28,5 +45,11 @@ function clearScreen() {
 
 initializeGrid(16);
 changeTileColor();
-const clearScreenBtn = document.getElementById("clearScreenBtn");
+
+// Implement color dropdown interaction
+// const colorOptions = document.getElementById('colors');
+// colorOptions.addEventListener('click', randomColor);
+
+
+const clearScreenBtn = document.getElementById('clearScreenBtn');
 clearScreenBtn.addEventListener('click', clearScreen);

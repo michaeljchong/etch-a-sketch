@@ -5,6 +5,10 @@
     <title>Etch-a-Sketch</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
   </head>
 
   <body>
@@ -14,7 +18,19 @@
     </header>
 
     <main>
-      <button id="clearScreenBtn">Clear Screen</button>
+      <div class="dropdown">
+        <label for="colors">Choose a color:</label>
+        <select name="colors" id="colors">
+          <option value="black">Black</option>
+          <option value="gradient">Grayscale</option>
+          <option value="rainbow">RAINBOW!</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button id="clearScreenBtn">Clear Screen</button>
+      </div>
+
       <div id="grid"></div>
     </main>
   </body>

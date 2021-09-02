@@ -1,9 +1,15 @@
 html {
-  font-family: Helvetica;
+  font-family: "Open Sans";
+  background-color: rgb(191, 254, 255);
 }
 
 header {
+  font-size: x-large;
   text-align: center;
+}
+
+h1 {
+  font-family: Sacramento;
 }
 
 main {
@@ -12,18 +18,23 @@ main {
   align-items: center;
 }
 
+.dropdown, .buttons, #grid {
+  margin: 10px;
+}
+
 #grid {
   display: grid;
   border-style: solid;
-  margin: 20px;
+  border-color: rgb(146, 253, 255);
+  border-radius: 20px;
+  border-width: 20px;
+  background-color: white;
   width: 960px;
   height: 960px;
-  background-color: rgb(233, 233, 233);
   grid-template-columns: repeat(16, 1fr);
 }
 
 .tile {
   height: auto;
   width: auto;
-  text-align: center;
 }
