@@ -12,10 +12,6 @@ main {
   align-items: center;
 }
 
-button {
-  margin
-}
-
 #grid {
   display: grid;
   border-style: solid;
