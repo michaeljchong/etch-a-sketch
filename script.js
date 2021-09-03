@@ -15,20 +15,41 @@ function randomColor() {
   return `rgb(${red}, ${blue}, ${green})`;
 }
 
-function grayscale() {
-  for (let a = 0.1; a < 1; a+=0.1) {
-    return `rgba(0, 0, 0, ${a})`
-  }
-}
-
 function changeTileColor(color) {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach(tile => {
     tile.addEventListener('mouseover', () => {
-      let tileColor = (color === 'rainbow') ? 
-          randomColor() : (color === 'grayscale') ? 
-          grayscale() : 'black';
+      switch (color) {
+        case 'rainbow':
+          tile.style.backgroundColor = randomColor();
+          break;
+        case 'grayscale':
+          if (tile.style.backgroundColor.slice(0, 4) === 'rgba') {
+            let opacity = parseFloat(tile.style.backgroundColor.slice(-4, -1));
+            if (opacity <= 0.9) {
+              tile.style.backgroundColor = `rgba(0, 0, 0, ${opacity + 0.1})`;
+            }
+          }
+          else if (tile.style.backgroundColor == 'rgb(0, 0, 0)') {
+            return;
+          }
+          else {
+            tile.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+          }
+          break;
+        default:
+          tile.style.backgroundColor = 'black';
+      }
+
+/*
+      let tileColor = (color === 'rainbow') ? randomColor() : 'rgba(0, 0, 0, 1)';
+      if (color === 'grayscale') {
+        let opacity = tile.style.opacity;
+        tile.style.opacity = opacity ? parseFloat(tile.style.opacity) + 0.1 : 0.1;
+      }
+
       tile.style.backgroundColor = tileColor;
+*/
     });
   });
 }
@@ -39,7 +60,7 @@ function clearScreen() {
   grid.innerHTML = "";
   grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   initializeGrid(gridSize);
-  changeTileColor(tileColor);
+  changeTileColor();
 }
 
 initializeGrid(16);
